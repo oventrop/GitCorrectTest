@@ -1,10 +1,14 @@
 package tests;
 
-import java.util.concurrent.TimeUnit;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -14,17 +18,18 @@ import pageobjects.GitLoginPage;
 import pageobjects.GitMainPage;
 import pageobjects.GitRepositoryPage;
 
-public class TestMainPage {
+public class GitFirfoxTest {
 
-	private final String LOGIN_EMAIL = "d.galievsky@gmail.com";
-	private final String LOGIN_PASSWORD = "master1";
-	private WebDriver wd;
+	private final static String LOGIN_EMAIL = "d.galievsky@gmail.com";
+	private final static String LOGIN_PASSWORD = "master1";
 
-	@BeforeClass(description = "Start browser")
-	public void startBrowser() {
-		System.setProperty("webdriver.gecko.driver", "C:/_DATA/geckodriver.exe");
-		wd = new FirefoxDriver();
+	private static WebDriver wd;
 
+	@BeforeClass(description = "Start remote execution")
+	public void startRemoteTest() throws MalformedURLException {
+		DesiredCapabilities cap = DesiredCapabilities.firefox();
+		URL HUB_URL = new URL("http://epbyminw2700:4444/wd/hub");
+		wd = new RemoteWebDriver(HUB_URL, cap);
 	}
 
 	@Test
@@ -64,7 +69,7 @@ public class TestMainPage {
 
 	@AfterClass(description = "Close browser")
 	public void closeBrowser() {
-		wd.close();
+		wd.quit();
 	}
 
 }
