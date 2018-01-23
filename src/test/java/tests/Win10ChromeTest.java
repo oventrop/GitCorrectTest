@@ -2,6 +2,7 @@ package tests;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
@@ -18,7 +19,7 @@ import pageobjects.GitLoginPage;
 import pageobjects.GitMainPage;
 import pageobjects.GitRepositoryPage;
 
-public class GitFirfoxTest {
+public class Win10ChromeTest {
 
 	private final static String LOGIN_EMAIL = "d.galievsky@gmail.com";
 	private final static String LOGIN_PASSWORD = "master1";
@@ -27,10 +28,11 @@ public class GitFirfoxTest {
 
 	@BeforeClass(description = "Start remote execution")
 	public void startRemoteTest() throws MalformedURLException {
-		DesiredCapabilities cap = DesiredCapabilities.firefox();
+		DesiredCapabilities cap = DesiredCapabilities.chrome();
+		cap.setPlatform(Platform.LINUX);
 		URL HUB_URL = new URL("http://epbyminw2700:4444/wd/hub");
 		wd = new RemoteWebDriver(HUB_URL, cap);
-	}
+		}
 
 	@Test
 	public void openGitHub() {

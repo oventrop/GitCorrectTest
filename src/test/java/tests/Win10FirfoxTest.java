@@ -18,7 +18,7 @@ import pageobjects.GitLoginPage;
 import pageobjects.GitMainPage;
 import pageobjects.GitRepositoryPage;
 
-public class GitChromeTest {
+public class Win10FirfoxTest {
 
 	private final static String LOGIN_EMAIL = "d.galievsky@gmail.com";
 	private final static String LOGIN_PASSWORD = "master1";
@@ -27,8 +27,8 @@ public class GitChromeTest {
 
 	@BeforeClass(description = "Start remote execution")
 	public void startRemoteTest() throws MalformedURLException {
-		DesiredCapabilities cap = DesiredCapabilities.chrome();
-		cap.setPlatform(Platform.WIN10);
+		DesiredCapabilities cap = DesiredCapabilities.firefox();
+		cap.setPlatform(Platform.WINDOWS);
 		URL HUB_URL = new URL("http://epbyminw2700:4444/wd/hub");
 		wd = new RemoteWebDriver(HUB_URL, cap);
 	}
