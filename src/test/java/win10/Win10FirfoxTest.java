@@ -1,4 +1,4 @@
-package tests;
+package win10;
 
 import java.net.MalformedURLException;
 import java.net.URL;

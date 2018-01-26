@@ -1,4 +1,4 @@
-package tests;
+package win10;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -29,7 +29,7 @@ public class Win10ChromeTest {
 	@BeforeClass(description = "Start remote execution")
 	public void startRemoteTest() throws MalformedURLException {
 		DesiredCapabilities cap = DesiredCapabilities.chrome();
-		cap.setPlatform(Platform.LINUX);
+		cap.setPlatform(Platform.WINDOWS);
 		URL HUB_URL = new URL("http://epbyminw2700:4444/wd/hub");
 		wd = new RemoteWebDriver(HUB_URL, cap);
 		}
